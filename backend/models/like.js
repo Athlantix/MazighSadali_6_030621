@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+/*const mongoose = require('mongoose');
 
 
 const likeSchema = mongoose.Schema({
@@ -10,4 +10,4 @@ const likeSchema = mongoose.Schema({
 
 
 
-module.exports = mongoose.model('Like', likeSchema);
+module.exports = mongoose.model('Like', likeSchema);*/
