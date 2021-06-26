@@ -72,7 +72,7 @@ exports.getAllStuff = (req, res, next) => {
 exports.postLike = (req, res, next) => {
 
 switch (req.body.like) {
-  
+
 case 1:
     Thing.updateOne({_id:req.params.id}, {$push: {usersLiked: req.body.userId},$inc: {likes: 1}})
       .then(() => res.status(200).json({message: 'Like ajouté !'}))
