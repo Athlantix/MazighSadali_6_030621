@@ -4,10 +4,12 @@ const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 const sha256 = require('sha256');
 const validator = require("email-validator");
+const passwordValidator = require('password-validator');
 exports.signup = (req, res, next) => {
-    try{
-        if(validator.validate(req.body.email)===true){
+  let verifiPassword= new RegExp("^([a-z0-9]{5,})$");
 
+    try{
+        if(validator.validate(req.body.email)===true && verifiPassword.test(req.body.password)===true ){
           bcrypt.hash(req.body.password, 10)
           .then(
             hash => {
@@ -24,6 +26,8 @@ exports.signup = (req, res, next) => {
         .catch(error => res.status(500).json({ error }));
         }else{
           throw 'Invalid';
+         
+          
         }
       }catch {
           res.status(500).json({

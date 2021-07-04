@@ -74,15 +74,47 @@ exports.postLike = (req, res, next) => {
 switch (req.body.like) {
 
 case 1:
-    Sauce.updateOne({_id:req.params.id}, {$push: {usersLiked: req.body.userId},$inc: {likes: 1}})
+    Sauce.findOne({_id:req.params.id})
+    .then((sauce) => {
+      try{
+      if (!sauce.usersLiked.includes(req.body.userId)) {
+        console.log("ok");
+        Sauce.updateOne({_id:req.params.id}, {$push: {usersLiked: req.body.userId},$inc: {likes: 1}})
       .then(() => res.status(200).json({message: 'Like ajouté !'}))
       .catch((error) => res.status(400).json({error}))
+      }
+      else{throw 'invalid'}
+    } catch {
+      res.status(500).json({
+            error: new Error('Invalid request!')
+          })
+    }
+
+    })
+    
   break;
 
 case -1:
+
+  Sauce.findOne({_id:req.params.id})
+  .then((sauce) => {
+    try{
+    if (!sauce.usersDisliked.includes(req.body.userId)) {
+      console.log("ok");
+
     Sauce.updateOne({_id: req.params.id}, {$push: {usersDisliked: req.body.userId},$inc: {dislikes: 1}})
       .then(() => {res.status(200).json({message: 'Dislike ajouté !'})})
       .catch((error) => res.status(400).json({error}))
+
+    }
+    else{throw 'invalid'}
+  } catch {
+    res.status(500).json({
+          error: new Error('Invalid request!')
+        })
+  }
+
+  })
       break;
 
 case 0:
