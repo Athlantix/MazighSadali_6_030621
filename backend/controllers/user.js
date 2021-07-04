@@ -5,6 +5,8 @@ const User = require('../models/User');
 const sha256 = require('sha256');
 const validator = require("email-validator");
 const passwordValidator = require('password-validator');
+
+require('dotenv').config();
 exports.signup = (req, res, next) => {
   let verifiPassword= new RegExp("^([a-z0-9]{5,})$");
 
@@ -52,8 +54,8 @@ exports.signup = (req, res, next) => {
               userId: user._id,
               token: jwt.sign(
                 { userId: user._id },
-                'RANDOM_TOKEN_SECRET',
-                { expiresIn: '24h' }
+                process.env.JWT_SECRET,
+                { expiresIn: process.env.TOKEN_EXPIRE_IN }
               )
             });
           })
