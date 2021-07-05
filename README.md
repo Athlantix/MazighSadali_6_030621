@@ -1,12 +1,20 @@
-## Piquante
 
-Pour faire fonctionner le projet, vous devez installer :
-- [NodeJS](https://nodejs.org/en/download/) en version 12.14 ou 14.0 
-- [Angular CLI](https://github.com/angular/angular-cli) en version 7.0.2.
-- [node-sass](https://www.npmjs.com/package/node-sass) : attention à prendre la version correspondante à NodeJS. Pour Node 14.0 par exemple, installer node-sass en version 4.14+.
+Installation et lancement de l'application
 
-Sur Windows, ces installations nécessitent d'utiliser PowerShell en tant qu'administrateur.
+-clonez le dossier
 
-## Development server
+-Pour la partie frontend il faudra s'assurer d'avoir:
 
-Démarrer ng serve pour avoir accès au serveur de développement. Rendez-vous sur http://localhost:4200/. L'application va se recharger automatiquement si vous modifiez un fichier source.
+    NodeJS en version 12.14 ou 14.0 
+    Angular CLI en version 7.0.2.
+    node-sass : prendre la version correspondante à NodeJS.
+
+-Lancez ensuite npm i 
+-Installez mongoose: npm install mongoose
+-Lancez dans le backend: nodemon server 
+-Lancez: ng serve
+-Sur votre navigateur saisissez l'url suivante: localhost:4200
+
+Il vous suffit maitenant de vous inscrire/connectez
+pour avoir accès à l'enssemble des sauces et des fonctionnalités du site:
+(sélectionner une sauce, réagir (like/dislikes) ou ajoutez la votre).
